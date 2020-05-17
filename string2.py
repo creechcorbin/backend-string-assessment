@@ -4,7 +4,7 @@ Kenzie assignment: String2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Corbin Creech, worked alongside Peyton Glover"
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -23,8 +23,9 @@ __author__ = "???"
 
 
 def verbing(s):
-    # your code here
-    return
+    if(len(s) <= 3): return s
+    elif(s.endswith('ing')): return s + 'ly'
+    return s + 'ing'
 
 
 # E. not_bad
@@ -36,12 +37,14 @@ def verbing(s):
 #   'This dinner is not that bad!' -> 'This dinner is good!'
 
 
-def not_bad(s):
-    # your code here
-    return
+def not_bad(s): 
+    if(s.endswith("!") and s.find('not') < s.find('bad')):
+        return s[:s.index('not')] + 'good!'
+    elif(s.find('not') < s.find('bad')): 
+        return s[:s.index('not')] + 'good'
+    elif(s.find('not') or s.find('bad') == -1): return s
 
-
-# F. front_back
+# F. front_back 
 # Consider dividing a string into two halves.
 # If the length is even, the front and back halves are the same
 # length. If the length is odd, we'll say that the extra
@@ -52,8 +55,23 @@ def not_bad(s):
 
 
 def front_back(a, b):
-    # your code here
-    return
+    front = ''
+    back = ''
+    bfront = ''
+    bback = ''
+    if(len(a) % 2 == 0):
+        front = a[:(len(a) // 2)]
+        back = a[-(len(a)//2):]
+    if(len(b) % 2 == 0):
+        bfront = b[:(len(b) // 2)]
+        bback = b[-(len(b)//2):]
+    if(len(a) % 2 == 1):
+        front = a[:(len(a) // 2) + 1]
+        back = a[-(len(a)//2):]
+    if(len(b) % 2 == 1):
+        bfront = b[:(len(b) // 2) + 1]
+        bback = b[-(len(b)//2):]
+    return front + bfront + back + bback
 
 
 # Provided simple test() function used in main() to print
